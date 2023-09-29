@@ -1,19 +1,21 @@
-﻿using Bulky.DataAccess.Data;
-using Bulky.Models;
+﻿using BulkyBook.DataAccess.Data;
+using BulkyBook.DataAccess.Repository.IRepository;
+using BulkyBook.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace BulkyWeb.Controllers
+namespace BulkyBookWeb.Areas.Admin.Controllers
 {
+    [Area("Admin")]
     public class CategoryController : Controller
     {
-        private readonly ApplicationDBContext _db;
-        public CategoryController(ApplicationDBContext db)
+        private readonly IUnitOfWork _unitOfWork;
+        public CategoryController(IUnitOfWork unitOfWork)
         {
-            _db = db;
+            _unitOfWork = unitOfWork;
         }
         public IActionResult Index()
         {
-            List<Category> objCategoryList = _db.Categories.ToList();
+            List<Category> objCategoryList = _unitOfWork.Category.GetAll().ToList();
             return View(objCategoryList);
         }
         public IActionResult Create()
@@ -23,18 +25,18 @@ namespace BulkyWeb.Controllers
         [HttpPost]
         public IActionResult Create(Category obj)
         {
-            if(obj.Name == obj.DisplayOrder.ToString())
+            if (obj.Name == obj.DisplayOrder.ToString())
             {
-                ModelState.AddModelError("Name","The Display Order cannot match with Category Name");
+                ModelState.AddModelError("Name", "The Display Order cannot match with Category Name");
             }
-            if (obj.Name!=null && obj.Name.ToLower() == "test")
+            if (obj.Name != null && obj.Name.ToLower() == "test")
             {
                 ModelState.AddModelError("", "Test is a invalid value");
             }
             if (ModelState.IsValid)
             {
-                _db.Categories.Add(obj);
-                _db.SaveChanges();
+                _unitOfWork.Category.Add(obj);
+                _unitOfWork.Save();
                 TempData["success"] = "Category created successfully";
                 return RedirectToAction("Index", "Category");
             }
@@ -42,24 +44,24 @@ namespace BulkyWeb.Controllers
         }
         public IActionResult Edit(int? id)
         {
-            if(id == null || id ==0)
+            if (id == null || id == 0)
             {
                 return BadRequest();
             }
-            Category? categoryfromDb = _db.Categories.Find(id);
-            if(categoryfromDb == null)
+            Category? categoryfromDb = _unitOfWork.Category.Get(u => u.Id == id);
+            if (categoryfromDb == null)
             {
                 return NotFound();
             }
             return View(categoryfromDb);
         }
         [HttpPost]
-        public IActionResult Edit(Category obj)
+        public IActionResult Edit(Category category)
         {
             if (ModelState.IsValid)
             {
-                _db.Categories.Update(obj);
-                _db.SaveChanges();
+                _unitOfWork.Category.Update(category);
+                _unitOfWork.Save();
                 TempData["success"] = "Category updated successfully";
                 return RedirectToAction("Index", "Category");
             }
@@ -71,7 +73,7 @@ namespace BulkyWeb.Controllers
             {
                 return BadRequest();
             }
-            Category? categoryfromDb = _db.Categories.Find(id);
+            Category? categoryfromDb = _unitOfWork.Category.Get(u => u.Id == id);
             if (categoryfromDb == null)
             {
                 return NotFound();
@@ -81,13 +83,13 @@ namespace BulkyWeb.Controllers
         [HttpPost, ActionName("Delete")]
         public IActionResult DeletePOST(int? id)
         {
-            Category? obj = _db.Categories.Find(id);
-            if(obj == null)
+            Category? obj = _unitOfWork.Category.Get(u => u.Id == id);
+            if (obj == null)
             {
                 return NotFound();
             }
-            _db.Remove(obj);
-            _db.SaveChanges();
+            _unitOfWork.Category.Remove(obj);
+            _unitOfWork.Save();
             TempData["success"] = "Category deleted successfully";
             return RedirectToAction("Index", "Category");
         }
