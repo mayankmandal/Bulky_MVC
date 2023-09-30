@@ -15,23 +15,27 @@ namespace BulkyBook.DataAccess.Data
         {
             //base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Category>().HasData(
-                new Category {Id =1 ,Name = "Action", DisplayOrder = 1 },
-                new Category {Id =2 ,Name = "SciFi", DisplayOrder = 2 },
-                new Category {Id =3 ,Name = "History", DisplayOrder = 3 }
+                new Category { Id = 1, Name = "Action", DisplayOrder = 1 },
+                new Category { Id = 2, Name = "SciFi", DisplayOrder = 2 },
+                new Category { Id = 3, Name = "History", DisplayOrder = 3 }
                 );
             modelBuilder.Entity<Product>().HasData(
-                new Product { 
-                Id = 1,
-                Title = "Title1",
-                Description = "Description1",
-                Author = "Author1",
-                ISBN = "SBN001",
-                ListPrice = 99,
-                Price = 90,
-                Price50 = 85,
-                Price100 = 80
+                new Product
+                {
+                    Id = 1,
+                    Title = "Title1",
+                    Description = "Description1",
+                    Author = "Author1",
+                    ISBN = "SBN001",
+                    ListPrice = 99,
+                    Price = 90,
+                    Price50 = 85,
+                    Price100 = 80,
+                    CategoryId = 1,
+                    ImageUrl = ""
                 },
-                new Product {
+                new Product
+                {
                     Id = 2,
                     Title = "Title2",
                     Description = "Description2",
@@ -40,7 +44,9 @@ namespace BulkyBook.DataAccess.Data
                     ListPrice = 99,
                     Price = 90,
                     Price50 = 85,
-                    Price100 = 80
+                    Price100 = 80,
+                    CategoryId = 2,
+                    ImageUrl = ""
                 }
                 );
         }
