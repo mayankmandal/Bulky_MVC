@@ -33,7 +33,7 @@
                                     }
                                     else
                                     {
-                                            <input asp-for="OrderHeader.Name" readonly type="text" class="form-control"></input>
+                                            <input asp-for="OrderHeader.Name" readonly type="text" class="form-control"/>
                                     }
                                 </div>
                             </div>
@@ -47,7 +47,7 @@
                                     }
                                     else
                                     {
-                                            <input asp-for="OrderHeader.PhoneNumber" readonly type="text" class="form-control"></input>
+                                            <input asp-for="OrderHeader.PhoneNumber" readonly type="text" class="form-control"/>
                                     }
                                 </div>
                             </div>
@@ -61,7 +61,7 @@
                                     }
                                     else
                                     {
-                                            <input asp-for="OrderHeader.StreetAddress" readonly type="text" class="form-control"></input>
+                                            <input asp-for="OrderHeader.StreetAddress" readonly type="text" class="form-control"/>
                                     }
                                 </div>
                             </div>
@@ -75,7 +75,7 @@
                                     }
                                     else
                                     {
-                                        <input asp-for="OrderHeader.City" readonly type="text" class="form-control"></input>
+                                        <input asp-for="OrderHeader.City" readonly type="text" class="form-control"/>
                                     }
                                 </div>
                             </div>
@@ -84,12 +84,12 @@
                                 <div class="col-9">
                                     @if (User.IsInRole(SD.Role_Admin)||User.IsInRole(SD.Role_Employee))
                                     {
-                                        <input asp-for="OrderHeader.State" type="text" class="form-control"></input>
+                                        <input asp-for="OrderHeader.State" type="text" class="form-control"/>
                                         <span asp-validation-for="OrderHeader.State" class="text-danger"></span>
                                     }
                                     else
                                     {
-                                        <input asp-for="OrderHeader.State" class="form-control" readonly type="text"></input>
+                                        <input asp-for="OrderHeader.State" class="form-control" readonly type="text"/>
                                     }
                                 </div>
                             </div>
@@ -98,12 +98,12 @@
                                 <div class="col-9">
                                     @if (User.IsInRole(SD.Role_Admin) || User.IsInRole(SD.Role_Employee))
                                     {
-                                        <input asp-for="OrderHeader.PostalCode" type="text" class="form-control"></input>
+                                        <input asp-for="OrderHeader.PostalCode" type="text" class="form-control"/>
                                         <span asp-validation-for="OrderHeader.PostalCode" class="text-danger"></span>
                                     }
                                     else
                                     {
-                                        <input asp-for="OrderHeader.PostalCode" class="form-control" readonly type="text"></input>
+                                        <input asp-for="OrderHeader.PostalCode" class="form-control" readonly type="text"/>
                                     }
                                 </div>
                             </div>
@@ -111,14 +111,14 @@
                                 <div class="col-3">Email</div>
                                 <div class="col-9">
                                     
-                                        <input asp-for="OrderHeader.ApplicationUser.Email" class="form-control" readonly type="text"></input>
+                                        <input asp-for="OrderHeader.ApplicationUser.Email" class="form-control" readonly type="text"/>
                                     
                                 </div>
                             </div>
                             <div class="row my-1">
                                 <div class="col-3">Order Date</div>
                                 <div class="col-9">
-                                    <input value="@Model.OrderHeader.OrderDate.ToShortDateString()" class="form-control" readonly type="text"></input>
+                                    <input value="@Model.OrderHeader.OrderDate.ToShortDateString()" class="form-control" readonly type="text"/>
                                     
                                 </div>
                             </div>
@@ -127,12 +127,12 @@
                                 <div class="col-9">
                                     @if (User.IsInRole(SD.Role_Admin) || User.IsInRole(SD.Role_Employee))
                                     {
-                                        <input asp-for="OrderHeader.Carrier" id="carrier" type="text" class="form-control"></input>
+                                        <input asp-for="OrderHeader.Carrier" id="carrier" type="text" class="form-control"/>
                                         
                                     }
                                     else
                                     {
-                                        <input asp-for="OrderHeader.Carrier" class="form-control" readonly type="text"></input>
+                                        <input asp-for="OrderHeader.Carrier" class="form-control" readonly type="text"/>
                                     }
                                 </div>
                             </div>
@@ -141,19 +141,19 @@
                                 <div class="col-9">
                                     @if (User.IsInRole(SD.Role_Admin) || User.IsInRole(SD.Role_Employee))
                                     {
-                                        <input asp-for="OrderHeader.TrackingNumber" id="trackingNumber" type="text" class="form-control"></input>
+                                        <input asp-for="OrderHeader.TrackingNumber" id="trackingNumber" type="text" class="form-control"/>
                                         
                                     }
                                     else
                                     {
-                                        <input asp-for="OrderHeader.TrackingNumber" class="form-control" readonly type="text"></input>
+                                        <input asp-for="OrderHeader.TrackingNumber" class="form-control" readonly type="text"/>
                                     }
                                 </div>
                             </div>
                             <div class="row my-1">
                                 <div class="col-3">Shipping Date</div>
                                 <div class="col-9">
-                                    <input value="@Model.OrderHeader.ShippingDate.ToShortDateString()" class="form-control" readonly type="text"></input>
+                                    <input value="@Model.OrderHeader.ShippingDate.ToShortDateString()" class="form-control" readonly type="text"/>
                                 </div>
                             </div>
                             @if (User.IsInRole(SD.Role_Admin) || User.IsInRole(SD.Role_Employee))
@@ -162,13 +162,13 @@
                                 <div class="row my-1">
                                     <div class="col-3">Session ID</div>
                                     <div class="col-9">
-                                        <input asp-for="OrderHeader.SessionId" class="form-control" readonly type="text"></input>
+                                        <input asp-for="OrderHeader.SessionId" class="form-control" readonly type="text"/>
                                     </div>
                                 </div>
                                 <div class="row my-1">
                                     <div class="col-3">Payment Intent ID</div>
                                     <div class="col-9">
-                                        <input asp-for="OrderHeader.PaymentIntentId" class="form-control" readonly type="text"></input>
+                                        <input asp-for="OrderHeader.PaymentIntentId" class="form-control" readonly type="text"/>
                                     </div>
                                 </div>
                             }
@@ -193,7 +193,7 @@
                             <div class="row my-1">
                                 <div class="col-3">Payment Status</div>
                                 <div class="col-9">
-                                    <input asp-for="@Model.OrderHeader.PaymentStatus" class="form-control" readonly type="text"></input>
+                                    <input asp-for="@Model.OrderHeader.PaymentStatus" class="form-control" readonly type="text"/>
                                 </div>
                             </div>
                             @if (User.IsInRole(SD.Role_Admin) || User.IsInRole(SD.Role_Employee))

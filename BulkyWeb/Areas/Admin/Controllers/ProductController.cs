@@ -22,9 +22,7 @@ namespace BulkyBookWeb.Areas.Admin.Controllers
         }
         public IActionResult Index()
         {
-            List<Product> objProductList = _unitOfWork.Product.GetAll(includeProperties: "Category").ToList();
-           
-            return View(objProductList);
+            return View();
         }
         public IActionResult Upsert(int? id)
         {
